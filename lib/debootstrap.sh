@@ -426,6 +426,12 @@ prepare_partitions()
 	elif [[ $HOSTRELEASE == xenial ]]; then
 		mkopts[ext4]="-q -m 2 -N $((128*${node_number}))"
 	fi
+
+	if [[ $BOARD =~ aml-s812|arm-64 ]]
+	then
+		mkopts[ext4]="${mkopts[ext4]} -L ROOTFS"
+	fi
+
 	mkopts[fat]='-n BOOT'
 	mkopts[ext2]='-q'
 	# mkopts[f2fs] is empty
