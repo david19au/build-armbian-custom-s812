@@ -105,7 +105,7 @@ compilation_prepare()
 	# Linux splash file
 	#
 
-	if linux-version compare "${version}" ge 5.8.10; then
+	if linux-version compare "${version}" ge 5.8.10 && [[ ! "${BOARD}" == "arm-64" ]]; then
 
 		display_alert "Adding" "Kernel splash file" "info"
 
